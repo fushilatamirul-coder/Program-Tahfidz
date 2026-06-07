@@ -13,19 +13,19 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Poppins', 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', 'Poppins', 'Inter', system-ui, sans-serif;
         }
 
-        /* Background utama dengan pattern islami transparan yang kaya dan animasi gradasi halus */
+        /* Background utama dengan pattern islami transparan yang kaya dan animasi */
         body {
-            background: #FDF8ED;  /* warm cream base */
+            background: #FDF8ED;
             position: relative;
             min-height: 100vh;
             padding: 2rem 2rem;
             animation: bgPulse 12s infinite ease-in-out;
         }
 
-        /* Background Pattern Islami Dinamis + Transparan (Geometris & Arabesque) */
+        /* Background Pattern Islami Transparan */
         body::before {
             content: "";
             position: fixed;
@@ -37,7 +37,7 @@
                 radial-gradient(circle at 10% 20%, rgba(210, 180, 130, 0.08) 2%, transparent 2.5%),
                 radial-gradient(circle at 85% 70%, rgba(170, 130, 70, 0.08) 1.8%, transparent 2%),
                 repeating-linear-gradient(45deg, rgba(150, 110, 60, 0.03) 0px, rgba(150, 110, 60, 0.03) 2px, transparent 2px, transparent 8px),
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" opacity="0.12"><path fill="none" stroke="%23B87C4E" stroke-width="1.5" d="M30,30 L40,38 L50,30 L60,38 L70,30 M30,60 L40,68 L50,60 L60,68 L70,60 M30,90 L40,98 L50,90 L60,98 L70,90 M30,120 L40,128 L50,120 L60,128 L70,120 M80,20 L90,28 L100,20 L110,28 L120,20 M80,50 L90,58 L100,50 L110,58 L120,50 M80,80 L90,88 L100,80 L110,88 L120,80 M80,110 L90,118 L100,110 L110,118 L120,110 M130,30 L140,38 L150,30 L160,38 L170,30 M130,60 L140,68 L150,60 L160,68 L170,60" /><path d="M100,140 L105,148 L95,148 Z M40,140 L45,148 L35,148 Z M160,140 L165,148 L155,148 Z" fill="%23B87C4E" opacity="0.2"/><circle cx="100" cy="40" r="12" stroke="%23B87C4E" fill="none" stroke-width="1.2" opacity="0.15"/><path d="M50,140 L70,150 L90,140 M110,140 L130,150 L150,140" stroke="%23855E32" fill="none" stroke-width="1" opacity="0.2"/></svg>');
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" opacity="0.12"><path fill="none" stroke="%23B87C4E" stroke-width="1.5" d="M30,30 L40,38 L50,30 L60,38 L70,30 M30,60 L40,68 L50,60 L60,68 L70,60 M30,90 L40,98 L50,90 L60,98 L70,90 M80,20 L90,28 L100,20 L110,28 L120,20 M80,50 L90,58 L100,50 L110,58 L120,50 M80,80 L90,88 L100,80 L110,88 L120,80 M130,30 L140,38 L150,30 L160,38 L170,30" /><path d="M100,140 L105,148 L95,148 Z M40,140 L45,148 L35,148 Z M160,140 L165,148 L155,148 Z" fill="%23B87C4E" opacity="0.2"/></svg>');
             background-repeat: repeat, repeat, repeat, repeat;
             background-size: 45px 45px, 60px 60px, auto, 100px;
             pointer-events: none;
@@ -45,7 +45,6 @@
             opacity: 0.7;
         }
 
-        /* Side Ornament (samping kiri kanan islamic motif) diperkuat */
         body::after {
             content: "";
             position: fixed;
@@ -64,11 +63,20 @@
             100% { background-color: #FDF8ED; }
         }
 
-        /* animasi floating untuk card dan elemen */
         @keyframes floatSoft {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-5px); }
             100% { transform: translateY(0px); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .app-container {
@@ -80,20 +88,13 @@
             backdrop-filter: blur(2px);
             border-radius: 2rem;
             padding: 0.5rem 0.2rem 1rem 0.2rem;
-            transition: all 0.3s;
         }
 
-        /* Header dengan animasi subtle */
         .header {
             text-align: center;
             margin-bottom: 2rem;
             padding: 1.2rem 1rem 0.8rem;
-            position: relative;
             animation: fadeInDown 0.8s ease-out;
-        }
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .header h1 {
@@ -103,18 +104,14 @@
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            letter-spacing: -0.3px;
             text-shadow: 2px 2px 12px rgba(110, 70, 25, 0.1);
         }
+
         .header h1 i {
-            background: none;
             color: #B97F48;
             margin: 0 6px;
             transition: transform 0.3s;
             display: inline-block;
-        }
-        .header h1:hover i {
-            transform: rotate(5deg) scale(1.05);
         }
 
         .subhead {
@@ -127,16 +124,9 @@
             border-radius: 60px;
             color: #6E4C2A;
             margin-top: 0.8rem;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.03);
             border: 1px solid #EBD9BB;
-            transition: all 0.2s;
-        }
-        .subhead:hover {
-            transform: scale(1.02);
-            background: #F5EAD8;
         }
 
-        /* action bar */
         .action-bar {
             display: flex;
             flex-wrap: wrap;
@@ -152,16 +142,13 @@
             border: 1px solid #E9DCC2;
             animation: slideInUp 0.5s ease;
         }
-        @keyframes slideInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
 
         .btn-group {
             display: flex;
             gap: 0.8rem;
             flex-wrap: wrap;
         }
+
         .btn {
             border: none;
             background: #F3ECDC;
@@ -176,35 +163,39 @@
             font-size: 0.85rem;
             color: #624A28;
         }
+
         .btn-primary {
             background: #C68B49;
             color: white;
             box-shadow: 0 5px 12px rgba(170, 105, 30, 0.2);
         }
+
         .btn-primary:hover {
             background: #A66F36;
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 18px rgba(110, 65, 20, 0.2);
         }
+
         .btn-secondary {
             background: #8F6A41;
             color: white;
         }
+
         .btn-secondary:hover {
             background: #7A5634;
             transform: translateY(-2px);
         }
+
         .btn-outline {
             background: #FFF9EF;
             border: 1px solid #DBCAA8;
             color: #8C643B;
         }
+
         .btn-outline:hover {
             background: #F9EFDE;
             transform: translateY(-2px);
         }
 
-        /* add panel */
         .add-item-panel {
             background: #FFFBF4ee;
             backdrop-filter: blur(6px);
@@ -213,26 +204,26 @@
             margin-bottom: 2rem;
             box-shadow: 0 12px 26px rgba(0, 0, 0, 0.04);
             border: 1px solid #EBDAB9;
-            transition: all 0.3s;
-            animation: fadeScale 0.6s;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: flex-end;
         }
-        @keyframes fadeScale {
-            from { opacity: 0; transform: scale(0.97); }
-            to { opacity: 1; transform: scale(1); }
-        }
+
         .form-field {
             flex: 1;
             min-width: 170px;
         }
+
         .form-field label {
             display: block;
             font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
             color: #C29A64;
-            letter-spacing: 0.5px;
             margin-bottom: 0.2rem;
         }
+
         .form-field input, .form-field textarea, .form-field select {
             width: 100%;
             padding: 0.7rem 1rem;
@@ -240,14 +231,14 @@
             border-radius: 32px;
             font-size: 0.9rem;
             background: #FFFFFFC9;
-            transition: 0.2s;
         }
+
         .form-field input:focus, .form-field textarea:focus, .form-field select:focus {
             border-color: #CC9D62;
             box-shadow: 0 0 0 3px rgba(204, 157, 98, 0.2);
             background: white;
-            transform: scale(1.01);
         }
+
         .btn-add {
             background: #B17A43;
             color: white;
@@ -258,18 +249,18 @@
             cursor: pointer;
             transition: 0.25s;
         }
+
         .btn-add:hover {
             background: #976532;
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
         }
 
-        /* card grid with hover animation */
         .grid-items {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
             gap: 1.6rem;
         }
+
         .card {
             background: #FFFFFFF2;
             backdrop-filter: blur(2px);
@@ -278,19 +269,14 @@
             box-shadow: 0 12px 24px rgba(80, 55, 30, 0.06);
             transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             border-left: 6px solid #E2B87A;
-            border-bottom: 1px solid #F1E5D0;
-            animation: cardGlow 3s infinite alternate;
         }
-        @keyframes cardGlow {
-            0% { box-shadow: 0 8px 18px rgba(100, 65, 25, 0.05); }
-            100% { box-shadow: 0 20px 30px rgba(150, 100, 40, 0.1); }
-        }
+
         .card:hover {
             transform: translateY(-8px) scale(1.01);
             background: #FFFFFF;
             border-left-color: #D99E48;
-            box-shadow: 0 24px 35px -12px rgba(80, 50, 20, 0.2);
         }
+
         .item-name {
             font-size: 1.1rem;
             font-weight: 800;
@@ -300,6 +286,7 @@
             align-items: baseline;
             flex-wrap: wrap;
         }
+
         .item-jumlah {
             background: #F7EFE0;
             padding: 0.2rem 0.7rem;
@@ -308,12 +295,14 @@
             font-weight: 700;
             color: #A4713A;
         }
+
         .item-desc {
             color: #7B613F;
             font-size: 0.85rem;
             line-height: 1.45;
             margin-top: 8px;
         }
+
         .item-spesifikasi {
             font-size: 0.72rem;
             background: #FBF4E8;
@@ -322,12 +311,14 @@
             color: #8F663B;
             margin-top: 8px;
         }
+
         .card-actions {
             display: flex;
             justify-content: flex-end;
             gap: 0.7rem;
             margin-top: 0.9rem;
         }
+
         .edit-btn, .delete-btn {
             background: none;
             border: none;
@@ -335,13 +326,11 @@
             cursor: pointer;
             padding: 0.35rem 1rem;
             border-radius: 40px;
-            transition: 0.2s;
             font-weight: 500;
         }
+
         .edit-btn { background: #F0E6D6; color: #946B3D; }
         .delete-btn { background: #FAEFE8; color: #BD7A5A; }
-        .edit-btn:hover { background: #E7D9C4; transform: scale(1.02); }
-        .delete-btn:hover { background: #F3E2D8; transform: scale(1.02); }
 
         .kategori-header h2 {
             font-size: 1.5rem;
@@ -351,14 +340,16 @@
             padding: 0.2rem 1.2rem;
             border-radius: 60px;
             color: #6C4F2C;
-            transition: 0.2s;
         }
+
         .badge-count {
             background: #DFCDAB;
             color: #4C361C;
             border-radius: 50px;
             padding: 0.2rem 1rem;
+            margin-left: 0.8rem;
         }
+
         .footer-note {
             text-align: center;
             margin-top: 2rem;
@@ -367,13 +358,10 @@
             border-top: 1px dashed #E8D8BA;
             padding-top: 1rem;
         }
-        /* loading animasi sederhana */
-        @keyframes spinSlow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        i.fa-spinner-third {
-            animation: spinSlow 1s linear infinite;
+
+        /* Sembunyikan elemen untuk PDF */
+        .pdf-only {
+            display: none;
         }
 
         @media (max-width: 760px) {
@@ -392,13 +380,12 @@
     <div class="action-bar">
         <div class="btn-group">
             <button id="saveLocalBtn" class="btn btn-primary"><i class="fas fa-save"></i> Simpan Laporan</button>
-            <button id="exportPdfBtn" class="btn btn-secondary"><i class="fas fa-file-pdf"></i> Export PDF</button>
+            <button id="exportPdfBtn" class="btn btn-secondary"><i class="fas fa-file-pdf"></i> Export PDF Profesional</button>
             <button id="resetDefaultBtn" class="btn btn-outline"><i class="fas fa-undo-alt"></i> Reset Data</button>
         </div>
         <div><i class="fas fa-pen-fancy"></i> <span style="font-weight:500;">✨ Klik edit untuk ubah jumlah / deskripsi</span></div>
     </div>
 
-    <!-- Panel Tambah Barang -->
     <div class="add-item-panel">
         <div class="form-field">
             <label><i class="fas fa-tag"></i> Nama Barang</label>
@@ -428,12 +415,42 @@
 
     <div id="categoriesContainer"></div>
     <div class="footer-note">
-        <i class="fas fa-spinner-third"></i> Data tersimpan di local storage | animasi islami menyejukkan | <i class="fas fa-certificate"></i>
+        <i class="fas fa-spinner-third"></i> Data tersimpan di local storage | animasi islami menyejukkan
+    </div>
+</div>
+
+<!-- Template Laporan PDF yang Profesional & Ringkas (tersembunyi, akan di-clone untuk export) -->
+<div id="pdfReportTemplate" style="display: none;">
+    <div style="padding: 1.5rem; font-family: 'Segoe UI', 'Times New Roman', serif; max-width: 100%; background: white;">
+        <!-- Kop Surat / Header Profesional -->
+        <div style="text-align: center; border-bottom: 3px solid #C68B49; padding-bottom: 1rem; margin-bottom: 1.5rem;">
+            <h2 style="color: #5C3A1A; margin:0; font-size: 22pt;">PROGRAM TAHFIDZ</h2>
+            <h1 style="color: #B27D40; margin: 5px 0; font-size: 26pt;">RUMAH WAKAF UTSMAN BIN AFFAN</h1>
+            <p style="color: #6E4C2A; font-size: 11pt; margin: 5px 0;">Sarana & Prasarana Pendukung Program Tahfidz Anak Usia Sekolah Dasar (SD)</p>
+            <p style="color: #8B6942; font-size: 9pt; margin-top: 8px;"><i>Laporan Kebutuhan Sarpras - Tanpa Anggaran Biaya</i></p>
+        </div>
+
+        <!-- Informasi Ringkasan -->
+        <div style="background: #FDF3E4; padding: 12px 18px; border-radius: 12px; margin-bottom: 20px; display: flex; justify-content: space-between; flex-wrap: wrap;">
+            <div><strong>📅 Tanggal Laporan:</strong> <span id="pdfDate"></span></div>
+            <div><strong>📦 Total Jenis Barang:</strong> <span id="totalItemsCount"></span></div>
+            <div><strong>🏷️ Jumlah Kategori:</strong> <span id="totalCategoriesCount"></span></div>
+        </div>
+
+        <!-- Tabel Laporan Ringkas & Profesional per Kategori -->
+        <div id="pdfCategoriesContent" style="margin-top: 10px;">
+            <!-- akan diisi dengan tabel dinamis -->
+        </div>
+
+        <div style="margin-top: 30px; text-align: center; border-top: 1px solid #E0D0B8; padding-top: 15px; font-size: 9pt; color: #9B7B55;">
+            <i>Dokumen ini merupakan daftar kebutuhan sarana dan prasarana untuk mendukung kelancaran program tahfidz.</i><br>
+            Disusun secara profesional oleh Tim Manajemen Program | Rumah Wakaf Utsman bin Affan
+        </div>
     </div>
 </div>
 
 <script>
-    // Data Default LENGKAP (tanpa anggaran)
+    // Data Default LENGKAP
     const defaultItems = [
         { id: "a1", name: "Monitor LED / Smart TV 64-65 Inch / Proyektor Epson", jumlah: "1 Unit", deskripsi: "Resolusi Full HD/4K, port HDMI/USB. Menampilkan materi hafalan & murottal.", kategori: "A. PENDUKUNG AUDIO VISUAL", spesifikasiTambahan: "≥64 Inch" },
         { id: "a2", name: "Sound System Aktif Ukuran Besar", jumlah: "1 Set", deskripsi: "Daya 100-200W, Bluetooth, USB, mic. Pemutaran murottal & murojaah kelompok.", kategori: "A. PENDUKUNG AUDIO VISUAL", spesifikasiTambahan: "Speaker + mic" },
@@ -512,12 +529,89 @@
         if(itemsData.length === 0) html = `<div style="background:#FDF1E0; border-radius:2rem; padding:2rem; text-align:center;">📭 Belum ada data. Silakan tambah barang atau reset.</div>`;
         container.innerHTML = html;
     }
+
     function escapeHtml(str) { if(!str) return ""; return str.replace(/[&<>]/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;' }[m])); }
     function resetToDefault() { if(confirm("Reset ke daftar awal?")) { itemsData = JSON.parse(JSON.stringify(defaultItems)); saveToStorage(); renderAllCategories(); } }
-    function exportToPDF() { html2pdf().set({ margin: 0.6, filename: 'Laporan_Tahfidz_RumahWakaf.pdf', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' } }).from(document.getElementById("reportContainer")).save(); }
     function saveReportNotify() { saveToStorage(); alert("✅ Laporan tersimpan di lokal browser!"); }
 
-    document.addEventListener("DOMContentLoaded", () => { loadFromStorage(); renderAllCategories(); document.getElementById("saveLocalBtn").addEventListener("click", saveReportNotify); document.getElementById("exportPdfBtn").addEventListener("click", exportToPDF); document.getElementById("resetDefaultBtn").addEventListener("click", resetToDefault); document.getElementById("addItemBtn").addEventListener("click", addNewItem); window.deleteItem = deleteItem; window.editItemInline = editItemInline; });
+    // EXPORT PDF dengan tampilan profesional dan ringkas (berbeda dari web)
+    function exportProfesionalPDF() {
+        // Siapkan data untuk laporan PDF
+        const categoriesOrder = ["A. PENDUKUNG AUDIO VISUAL","B. SARANA KELAS","C. KEAGAMAAN","D. ADMINISTRASI & OPERASIONAL","E. KEAMANAN & DOKUMENTASI","F. PUBLIKASI & INFORMASI"];
+        const grouped = {};
+        itemsData.forEach(i => { if(!grouped[i.kategori]) grouped[i.kategori] = []; grouped[i.kategori].push(i); });
+        
+        // Generate HTML untuk PDF (tabel per kategori, lebih ringkas & profesional)
+        let pdfHtml = '';
+        for(let cat of categoriesOrder) {
+            let items = grouped[cat] || [];
+            if(items.length === 0) continue;
+            pdfHtml += `<div style="margin-bottom: 25px; page-break-inside: avoid;">
+                <h3 style="background: #F2E5D4; padding: 8px 15px; border-radius: 8px; color: #5C3A1A; margin-bottom: 12px; font-size: 16pt;">📌 ${cat}</h3>
+                <table style="width: 100%; border-collapse: collapse; font-size: 10pt; margin-bottom: 10px;">
+                    <thead>
+                        <tr><th style="text-align: left; border-bottom: 2px solid #C68B49; padding: 8px 5px; background: #FDF3E8;">No</th>
+                            <th style="text-align: left; border-bottom: 2px solid #C68B49; padding: 8px 5px; background: #FDF3E8;">Nama Barang</th>
+                            <th style="text-align: left; border-bottom: 2px solid #C68B49; padding: 8px 5px; background: #FDF3E8;">Jumlah/Spesifikasi</th>
+                            <th style="text-align: left; border-bottom: 2px solid #C68B49; padding: 8px 5px; background: #FDF3E8;">Deskripsi & Fungsi</th>
+                        </tr>
+                    </thead>
+                    <tbody>`;
+            items.forEach((item, idx) => {
+                pdfHtml += `<tr>
+                    <td style="padding: 8px 5px; border-bottom: 1px solid #E5D5BB;">${idx+1}</td>
+                    <td style="padding: 8px 5px; border-bottom: 1px solid #E5D5BB;"><strong>${escapeHtml(item.name)}</strong><br><span style="font-size: 8pt; color:#886E48;">${escapeHtml(item.spesifikasiTambahan || '')}</span></td>
+                    <td style="padding: 8px 5px; border-bottom: 1px solid #E5D5BB;">${escapeHtml(item.jumlah)}</td>
+                    <td style="padding: 8px 5px; border-bottom: 1px solid #E5D5BB;">${escapeHtml(item.deskripsi)}</td>
+                </tr>`;
+            });
+            pdfHtml += `</tbody></table></div>`;
+        }
+        
+        // Clone template dan isi
+        const template = document.getElementById("pdfReportTemplate").cloneNode(true);
+        template.style.display = "block";
+        template.id = "pdfActiveClone";
+        
+        // Update tanggal dan statistik
+        const today = new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
+        const totalItems = itemsData.length;
+        const uniqueCats = new Set(itemsData.map(i => i.kategori)).size;
+        
+        template.querySelector("#pdfDate").innerText = today;
+        template.querySelector("#totalItemsCount").innerText = totalItems;
+        template.querySelector("#totalCategoriesCount").innerText = uniqueCats;
+        template.querySelector("#pdfCategoriesContent").innerHTML = pdfHtml;
+        
+        document.body.appendChild(template);
+        
+        // Export ke PDF
+        const opt = {
+            margin: [0.6, 0.6, 0.6, 0.6],
+            filename: `Laporan_Sarpras_Tahfidz_${today.replace(/\s/g, '_')}.pdf`,
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, letterRendering: true, logging: false, useCORS: false },
+            jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+        };
+        
+        html2pdf().set(opt).from(template).save().then(() => {
+            document.body.removeChild(template);
+        }).catch(() => {
+            document.body.removeChild(template);
+            alert("Gagal generate PDF, coba lagi");
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => { 
+        loadFromStorage(); 
+        renderAllCategories(); 
+        document.getElementById("saveLocalBtn").addEventListener("click", saveReportNotify); 
+        document.getElementById("exportPdfBtn").addEventListener("click", exportProfesionalPDF); 
+        document.getElementById("resetDefaultBtn").addEventListener("click", resetToDefault); 
+        document.getElementById("addItemBtn").addEventListener("click", addNewItem); 
+        window.deleteItem = deleteItem; 
+        window.editItemInline = editItemInline; 
+    });
 </script>
 </body>
 </html>
