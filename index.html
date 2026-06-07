@@ -1,61 +1,110 @@
+Berikut adalah kode HTML untuk aplikasi web manajemen kebutuhan sarana prasarana program tahfidz dengan tema warna cream, aksen islami, dan judul sesuai permintaan Anda.
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Manajemen Sarpras | Program Tahfidz Anak SD</title>
-    <!-- Font Awesome 6 (free) -->
+    <title>Tahfidz | Rumah Wakaf Utsman bin Affan</title>
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- html2pdf library -->
+    <!-- html2pdf -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            font-family: 'Segoe UI', 'Poppins', system-ui, 'Roboto', sans-serif;
         }
 
+        /* background cream dan pola islami di sisi kiri/kanan */
         body {
-            background: linear-gradient(145deg, #e9f0e6 0%, #d9e3d4 100%);
-            padding: 2rem 1.5rem;
-            color: #1e2f1c;
+            background: #FEF9E6;  /* soft cream */
+            position: relative;
+            min-height: 100vh;
+            padding: 2rem 2rem;
         }
 
-        /* container utama */
+        /* dekorasi pattern islami di sisi samping (kiri & kanan) */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 130px;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.12"><path fill="none" stroke="%238b6b3d" stroke-width="1.2" d="M20,20 L30,25 L40,20 L50,25 L60,20 L70,25 L80,20 M20,40 L30,45 L40,40 L50,45 L60,40 L70,45 L80,40 M20,60 L30,65 L40,60 L50,65 L60,60 L70,65 L80,60 M20,80 L30,85 L40,80 L50,85 L60,80 L70,85 L80,80 M10,30 L15,35 L10,40 M90,30 L95,35 L90,40" /><circle cx="50" cy="50" r="6" stroke="%238b6b3d" fill="none" stroke-width="1.2"/><path d="M30,15 L35,20 L30,25 M70,15 L65,20 L70,25" stroke="%238b6b3d" fill="none"/><path d="M45,85 L50,90 L55,85" stroke="%238b6b3d" fill="none"/><path d="M20,90 L25,88 L30,90" stroke="%238b6b3d"/></svg>');
+            background-repeat: repeat-y;
+            background-position: left top;
+            background-size: 50px auto;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 130px;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.12"><path fill="none" stroke="%238b6b3d" stroke-width="1.2" d="M20,20 L30,25 L40,20 L50,25 L60,20 L70,25 L80,20 M20,40 L30,45 L40,40 L50,45 L60,40 L70,45 L80,40 M20,60 L30,65 L40,60 L50,65 L60,60 L70,65 L80,60 M20,80 L30,85 L40,80 L50,85 L60,80 L70,85 L80,80 M10,30 L15,35 L10,40 M90,30 L95,35 L90,40" /><circle cx="50" cy="50" r="6" stroke="%238b6b3d" fill="none"/><path d="M30,15 L35,20 L30,25 M70,15 L65,20 L70,25" stroke="%238b6b3d"/><path d="M45,85 L50,90 L55,85" stroke="%238b6b3d"/></svg>');
+            background-repeat: repeat-y;
+            background-position: right top;
+            background-size: 50px auto;
+            pointer-events: none;
+            z-index: 0;
+        }
+
         .app-container {
-            max-width: 1600px;
+            max-width: 1400px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            background: rgba(254, 249, 230, 0.7);
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            padding: 0.2rem 0;
         }
 
-        /* Header styling */
+        /* header dengan aksen islami */
         .header {
             text-align: center;
             margin-bottom: 2rem;
+            padding: 1rem 1rem 0.5rem;
+            position: relative;
         }
         .header h1 {
-            font-size: 2.2rem;
-            background: linear-gradient(135deg, #1f5e3a, #2b7a4b);
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #A67B46, #7A5C3A);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            letter-spacing: -0.5px;
-            font-weight: 800;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+            letter-spacing: -0.3px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+            font-family: 'Segoe UI', 'Poppins', serif;
         }
-        .header p {
+        .header h1 i {
+            background: none;
+            color: #C49A6C;
+            margin: 0 8px;
+        }
+        .subhead {
+            font-size: 1rem;
             font-weight: 500;
-            color: #2f5d3a;
-            background: #fff6e0c9;
+            background: #F3ECD9;
             display: inline-block;
-            padding: 0.3rem 1.8rem;
-            border-radius: 40px;
-            backdrop-filter: blur(2px);
-            font-size: 0.95rem;
+            padding: 0.4rem 1.6rem;
+            border-radius: 60px;
+            color: #6B4E2E;
             margin-top: 0.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            border: 1px solid #EADDBE;
         }
 
-        /* toolbar aksi */
+        /* toolbar */
         .action-bar {
             display: flex;
             flex-wrap: wrap;
@@ -63,10 +112,11 @@
             align-items: center;
             gap: 1rem;
             margin-bottom: 2rem;
-            background: white;
-            padding: 0.9rem 1.8rem;
+            background: #FFFBF0;
+            padding: 0.8rem 1.8rem;
             border-radius: 48px;
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 6px 14px rgba(90, 60, 30, 0.08);
+            border: 1px solid #EAD8BB;
         }
         .btn-group {
             display: flex;
@@ -75,59 +125,51 @@
         }
         .btn {
             border: none;
-            background: #f5f7f2;
+            background: #F5EDDA;
             padding: 0.6rem 1.4rem;
             border-radius: 50px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: 0.2s;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             font-size: 0.85rem;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            color: #5C3F23;
         }
         .btn-primary {
-            background: #1f6e43;
+            background: #B78C4A;
             color: white;
-            box-shadow: 0 4px 8px rgba(31,110,67,0.2);
+            box-shadow: 0 4px 8px rgba(140, 85, 30, 0.2);
         }
         .btn-primary:hover {
-            background: #0e5937;
+            background: #9E6F36;
             transform: translateY(-2px);
         }
         .btn-secondary {
-            background: #2c3e2b;
+            background: #8B6946;
             color: white;
         }
         .btn-secondary:hover {
-            background: #1f2e1e;
+            background: #6F4F31;
         }
         .btn-outline {
-            background: white;
-            border: 1px solid #cbd5c0;
-            color: #2d5a3b;
+            background: #FFF7E8;
+            border: 1px solid #DCCAA8;
+            color: #8B623F;
         }
         .btn-outline:hover {
-            background: #eef3e9;
-            border-color: #8fbb7a;
-        }
-        .btn-danger {
-            background: #fff0f0;
-            color: #b33;
-            border: 1px solid #ffcdcd;
-        }
-        .btn-danger:hover {
-            background: #ffe0e0;
+            background: #F3E8D2;
         }
 
-        /* form tambah barang */
+        /* panel tambah barang */
         .add-item-panel {
-            background: white;
+            background: #FFFDF5;
             border-radius: 2rem;
             padding: 1.2rem 1.8rem;
             margin-bottom: 2rem;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid #EFE2CA;
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
@@ -140,40 +182,40 @@
         .form-field label {
             display: block;
             font-size: 0.7rem;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
-            color: #4a6741;
+            color: #B48A5A;
             letter-spacing: 0.5px;
             margin-bottom: 0.2rem;
         }
-        .form-field input, .form-field textarea {
+        .form-field input, .form-field textarea, .form-field select {
             width: 100%;
             padding: 0.7rem 1rem;
-            border: 1px solid #cfdec6;
-            border-radius: 28px;
+            border: 1px solid #E2D2B5;
+            border-radius: 32px;
             font-size: 0.9rem;
-            background: #fefef7;
+            background: #FEFCF5;
             outline: none;
             transition: 0.2s;
         }
-        .form-field input:focus, .form-field textarea:focus {
-            border-color: #3c9b6b;
-            box-shadow: 0 0 0 3px rgba(60,155,107,0.2);
-        }
-        .form-field textarea {
-            resize: vertical;
-            border-radius: 20px;
+        .form-field input:focus, .form-field textarea:focus, .form-field select:focus {
+            border-color: #C7A16B;
+            box-shadow: 0 0 0 3px rgba(199, 161, 107, 0.2);
         }
         .btn-add {
-            background: #2b7a4b;
+            background: #A5763E;
             color: white;
             padding: 0.7rem 1.8rem;
             border-radius: 40px;
             font-weight: bold;
-            margin-top: 0.4rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-add:hover {
+            background: #8C5E2F;
         }
 
-        /* kartu kategori */
+        /* kategori section */
         .kategori-section {
             margin-bottom: 2.5rem;
         }
@@ -187,15 +229,16 @@
         .kategori-header h2 {
             font-size: 1.5rem;
             font-weight: 700;
-            background: #2c5a2e30;
+            background: #EADDBE70;
             padding: 0.2rem 1rem;
-            border-radius: 30px;
+            border-radius: 40px;
             backdrop-filter: blur(4px);
-            letter-spacing: -0.3px;
+            color: #6C4F2C;
+            border-left: 5px solid #C7A16B;
         }
         .badge-count {
-            background: #295f38;
-            color: white;
+            background: #DABB94;
+            color: #3E2A1A;
             border-radius: 50px;
             padding: 0.2rem 0.9rem;
             font-size: 0.8rem;
@@ -207,294 +250,265 @@
             gap: 1.4rem;
         }
         .card {
-            background: #ffffffdd;
-            backdrop-filter: blur(2px);
-            background: white;
+            background: #FFFFFFE6;
+            backdrop-filter: blur(1px);
             border-radius: 1.5rem;
             padding: 1.2rem 1.3rem;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-            transition: all 0.2s;
-            border-left: 6px solid #72b78b;
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
+            box-shadow: 0 10px 20px rgba(80, 55, 30, 0.05);
+            transition: 0.2s;
+            border-left: 6px solid #D9B382;
+            border-bottom: 1px solid #F3E5CE;
         }
         .card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 16px 28px rgba(102, 68, 34, 0.1);
+            background: #FFFFF5;
         }
         .item-name {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 800;
-            color: #1e4620;
+            color: #573F1F;
             display: flex;
             justify-content: space-between;
             align-items: baseline;
+            flex-wrap: wrap;
+            gap: 5px;
         }
         .item-jumlah {
-            background: #ecf7e8;
+            background: #F6EDDC;
             padding: 0.2rem 0.7rem;
             border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #2b6e42;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #936B3C;
         }
         .item-desc {
-            color: #3f4d3a;
+            color: #69563C;
             font-size: 0.85rem;
             line-height: 1.4;
-            margin: 0.2rem 0;
+            margin-top: 6px;
         }
         .item-spesifikasi {
-            font-size: 0.75rem;
-            background: #f5f7ef;
+            font-size: 0.72rem;
+            background: #F9F3E6;
             padding: 0.4rem 0.6rem;
-            border-radius: 14px;
-            color: #556b4a;
+            border-radius: 20px;
+            color: #8B6942;
+            margin-top: 8px;
         }
         .card-actions {
             display: flex;
             justify-content: flex-end;
             gap: 0.6rem;
-            margin-top: 0.4rem;
+            margin-top: 0.8rem;
         }
-        .edit-btn, .delete-btn, .save-edit-btn {
+        .edit-btn, .delete-btn {
             background: none;
             border: none;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             cursor: pointer;
-            padding: 0.3rem 0.6rem;
-            border-radius: 30px;
+            padding: 0.3rem 0.8rem;
+            border-radius: 40px;
             transition: 0.1s;
         }
-        .edit-btn { color: #2c7a4a; background: #eef5ea; }
-        .delete-btn { color: #bc5a4c; background: #fff2f0; }
-        .save-edit-btn { color: #006633; background: #dcfce7; }
-        .inline-edit {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-        .inline-edit input, .inline-edit textarea {
-            padding: 6px 8px;
-            border-radius: 20px;
-            border: 1px solid #bbd4ac;
-        }
-        /* mode edit */
+        .edit-btn { background: #EEE2CF; color: #8B623F; }
+        .delete-btn { background: #F6E7E0; color: #BC7A5C; }
+        .edit-btn:hover { background: #E2CEB0; }
+        .delete-btn:hover { background: #F1D9CF; }
         .footer-note {
             text-align: center;
-            margin-top: 3rem;
+            margin-top: 2rem;
             font-size: 0.7rem;
-            color: #517a46;
+            color: #B89364;
+            border-top: 1px dashed #EADBBE;
+            padding-top: 1rem;
         }
-        @media (max-width: 680px) {
+        @media (max-width: 760px) {
             body { padding: 1rem; }
-            .action-bar { flex-direction: column; align-items: stretch; }
+            body::before, body::after { width: 40px; background-size: 30px auto; }
         }
     </style>
 </head>
 <body>
 <div class="app-container" id="reportContainer">
-    <!-- header laporan -->
     <div class="header">
-        <h1><i class="fas fa-quran" style="color: #2b7a4b;"></i> Sarana & Prasarana <br> Program Tahfidz Anak SD</h1>
-        <p>📋 Daftar kebutuhan lengkap | Bisa edit & tambah manual</p>
+        <h1><i class="fas fa-mosque"></i> PROGRAM TAHFIDZ <br> RUMAH WAKAF UTSMAN BIN AFFAN <i class="fas fa-quran"></i></h1>
+        <div class="subhead"><i class="fas fa-hand-peace"></i> Sarana & Prasarana Tahfidz Anak Usia SD</div>
     </div>
 
-    <!-- toolbar -->
     <div class="action-bar">
         <div class="btn-group">
             <button id="saveLocalBtn" class="btn btn-primary"><i class="fas fa-save"></i> Simpan Laporan</button>
             <button id="exportPdfBtn" class="btn btn-secondary"><i class="fas fa-file-pdf"></i> Export PDF</button>
             <button id="resetDefaultBtn" class="btn btn-outline"><i class="fas fa-undo-alt"></i> Reset Data Awal</button>
         </div>
-        <div><i class="fas fa-pen-alt"></i> <span style="font-weight:500;">Klik ✏️ pada barang untuk ubah jumlah/deskripsi</span></div>
+        <div><i class="fas fa-pen-fancy"></i> <span style="font-weight:500;">🖊️ Klik Ubah Jml/Deskripsi</span></div>
     </div>
 
-    <!-- Panel Tambah Barang Manual -->
+    <!-- Tambah barang manual -->
     <div class="add-item-panel">
         <div class="form-field">
             <label><i class="fas fa-tag"></i> Nama Barang</label>
-            <input type="text" id="newItemName" placeholder="Contoh: Kursi Belajar Anak">
+            <input type="text" id="newItemName" placeholder="Contoh: Al-Qur'an Tajwid">
         </div>
         <div class="form-field">
             <label><i class="fas fa-sort-numeric-up"></i> Jumlah / Spesifikasi</label>
-            <input type="text" id="newItemJumlah" placeholder="10 Unit / 1 Set">
+            <input type="text" id="newItemJumlah" placeholder="20 Set / 1 Unit">
         </div>
         <div class="form-field">
             <label><i class="fas fa-align-left"></i> Deskripsi Lengkap</label>
-            <textarea id="newItemDesc" rows="1" placeholder="Keterangan detail barang..."></textarea>
+            <textarea id="newItemDesc" rows="1" placeholder="Keterangan detail & fungsi..."></textarea>
         </div>
         <div class="form-field">
             <label><i class="fas fa-layer-group"></i> Kategori</label>
             <select id="newItemKategori">
-                <option value="A. PENDUKUNG AUDIO VISUAL">A. Audio Visual</option>
-                <option value="B. SARANA KELAS">B. Sarana Kelas</option>
-                <option value="C. KEAGAMAAN">C. Keagamaan</option>
-                <option value="D. ADMINISTRASI & OPERASIONAL">D. Administrasi</option>
-                <option value="E. KEAMANAN & DOKUMENTASI">E. Keamanan</option>
-                <option value="F. PUBLIKASI & INFORMASI">F. Publikasi</option>
+                <option value="A. PENDUKUNG AUDIO VISUAL">🎥 A. Audio Visual</option>
+                <option value="B. SARANA KELAS">🪑 B. Sarana Kelas</option>
+                <option value="C. KEAGAMAAN">📖 C. Keagamaan</option>
+                <option value="D. ADMINISTRASI & OPERASIONAL">📂 D. Administrasi & Operasional</option>
+                <option value="E. KEAMANAN & DOKUMENTASI">📸 E. Keamanan & Dokumentasi</option>
+                <option value="F. PUBLIKASI & INFORMASI">📢 F. Publikasi & Informasi</option>
             </select>
         </div>
         <button id="addItemBtn" class="btn-add"><i class="fas fa-plus-circle"></i> Tambah Barang</button>
     </div>
 
-    <!-- dynamic categories will be injected here -->
     <div id="categoriesContainer"></div>
     <div class="footer-note">
-        <i class="fas fa-hand-peace"></i> Data tersimpan di local browser. Anda bisa menambah, mengedit jumlah, deskripsi, serta menyimpan laporan.
+        <i class="fas fa-star-and-crescent"></i> Bismillah, data tersimpan di perangkat Anda. Dapat diedit, tambah barang, export PDF. <i class="fas fa-star-and-crescent"></i>
     </div>
 </div>
 
 <script>
-    // ---------- DATA DEFAULT (berdasarkan laporan tanpa anggaran) ----------
+    // ---------- DATA DEFAULT (tidak mencantumkan anggaran) ----------
     const defaultItems = [
         // A. Audio Visual
-        { id: "a1", name: "Monitor LED / Smart TV 64-65 Inch / Proyektor Epson", jumlah: "1 Unit", deskripsi: "Resolusi Full HD/4K, port HDMI/USB. Untuk tampil materi hafalan, video tajwid, murottal.", kategori: "A. PENDUKUNG AUDIO VISUAL", spesifikasiTambahan: "Layar minimal 64 Inch" },
-        { id: "a2", name: "Sound System Aktif Ukuran Besar", jumlah: "1 Set", deskripsi: "Daya 100-200 Watt, Bluetooth, USB, mic. Pemutaran audio murottal & murojaah kelompok.", kategori: "A. PENDUKUNG AUDIO VISUAL", spesifikasiTambahan: "Speaker aktif + mic" },
-        { id: "a3", name: "Laptop Pembelajaran (Opsional)", jumlah: "1 Unit", deskripsi: "Opsional jika inventaris PAWON Mbah Gito belum ada. Core i3 gen12/Ryzen5, RAM 8GB, SSD.", kategori: "A. PENDUKUNG AUDIO VISUAL", spesifikasiTambahan: "Administrasi & media AV" },
+        { id: "a1", name: "Monitor LED / Smart TV 64-65 Inch / Proyektor Epson", jumlah: "1 Unit", deskripsi: "Resolusi Full HD/4K, port HDMI/USB. Untuk menampilkan materi hafalan & murottal.", kategori: "A. PENDUKUNG AUDIO VISUAL", spesifikasiTambahan: "Layar ≥64 Inch" },
+        { id: "a2", name: "Sound System Aktif Ukuran Besar", jumlah: "1 Set", deskripsi: "Daya 100-200W, Bluetooth, USB, mic. Pemutaran audio murottal dan murojaah kelompok.", kategori: "A. PENDUKUNG AUDIO VISUAL", spesifikasiTambahan: "Speaker aktif + mic" },
+        { id: "a3", name: "Laptop Pembelajaran (Opsional)", jumlah: "1 Unit", deskripsi: "Core i3 gen12/ Ryzen5, RAM 8GB, SSD. Administrasi & penyimpanan data siswa jika inventaris belum ada.", kategori: "A. PENDUKUNG AUDIO VISUAL", spesifikasiTambahan: "Media AV + administrasi" },
         // B. Sarana Kelas
-        { id: "b1", name: "Whiteboard Stand Besar", jumlah: "1 Unit", deskripsi: "Ukuran 2x1.5 meter, stand besi roda, media utama penyampaian materi tahsin & tajwid.", kategori: "B. SARANA KELAS", spesifikasiTambahan: "Permukaan whiteboard" },
-        { id: "b2", name: "Whiteboard Double Side", jumlah: "1 Unit", deskripsi: "100x80 cm, dua sisi tulis, roda penyangga. Papan informasi jadwal & target hafalan.", kategori: "B. SARANA KELAS", spesifikasiTambahan: "Mobile" },
-        { id: "b3", name: "Meja Belajar Anak", jumlah: "20 Unit", deskripsi: "Meja lesehan, material kayu/plastik berkualitas. Fasilitas belajar individu.", kategori: "B. SARANA KELAS", spesifikasiTambahan: "Aman anak SD" },
-        { id: "b4", name: "Karpet Lantai Pembelajaran", jumlah: "Sesuai ruang", deskripsi: "Karpet tebal/tatami edukasi, mudah dibersihkan, nyaman untuk metode lesehan.", kategori: "B. SARANA KELAS", spesifikasiTambahan: "Nyaman & aman" },
-        { id: "b5", name: "Kipas Angin / AC Ruangan", jumlah: "1-2 Unit", deskripsi: "Kipas dinding/berdiri, atau AC 1 PK. Menjaga kenyamanan konsentrasi.", kategori: "B. SARANA KELAS", spesifikasiTambahan: "Sirkulasi udara" },
+        { id: "b1", name: "Whiteboard Stand Besar", jumlah: "1 Unit", deskripsi: "Ukuran 2x1,5 meter, stand besi roda. Media utama tahsin, tajwid, hafalan.", kategori: "B. SARANA KELAS", spesifikasiTambahan: "Permukaan whiteboard" },
+        { id: "b2", name: "Whiteboard Double Side", jumlah: "1 Unit", deskripsi: "100x80 cm, dua sisi tulis, roda. Papan informasi jadwal & target hafalan.", kategori: "B. SARANA KELAS", spesifikasiTambahan: "Mobile" },
+        { id: "b3", name: "Meja Belajar Anak", jumlah: "20 Unit", deskripsi: "Meja lesehan, material kayu/plastik. Fasilitas belajar individual.", kategori: "B. SARANA KELAS", spesifikasiTambahan: "Aman untuk usia SD" },
+        { id: "b4", name: "Karpet Lantai Pembelajaran", jumlah: "Menyesuaikan ruang", deskripsi: "Karpet tebal/tatami edukasi, mudah dibersihkan, nyaman untuk lesehan.", kategori: "B. SARANA KELAS", spesifikasiTambahan: "Tebal & aman" },
+        { id: "b5", name: "Kipas Angin / AC Ruangan", jumlah: "1-2 Unit", deskripsi: "Kipas dinding/berdiri atau AC 1 PK. Menjaga kenyamanan konsentrasi.", kategori: "B. SARANA KELAS", spesifikasiTambahan: "Sirkulasi udara baik" },
         // C. Keagamaan
-        { id: "c1", name: "Rak Al-Qur'an dan Buku Iqra'", jumlah: "1 Unit", deskripsi: "Material kayu/besi, kapasitas 30-50 mushaf. Tempat penyimpanan Al-Qur'an & Iqro.", kategori: "C. KEAGAMAAN", spesifikasiTambahan: "Tertata rapi" },
-        { id: "c2", name: "Mushaf Al-Qur'an Program Tahfidz", jumlah: "Sesuai peserta", deskripsi: "Mushaf standar tahfidz, cetakan jelas. Media utama hafalan & murojaah.", kategori: "C. KEAGAMAAN", spesifikasiTambahan: "Standar tahfidz" },
+        { id: "c1", name: "Rak Al-Qur'an dan Buku Iqra'", jumlah: "1 Unit", deskripsi: "Material kayu/besi kapasitas 30-50 mushaf. Penyimpanan rapi Al-Qur'an & Iqro.", kategori: "C. KEAGAMAAN", spesifikasiTambahan: "Rak kokoh" },
+        { id: "c2", name: "Mushaf Al-Qur'an Program Tahfidz", jumlah: "Sesuai peserta", deskripsi: "Mushaf standar tahfidz, cetakan jelas. Media hafalan & murojaah.", kategori: "C. KEAGAMAAN", spesifikasiTambahan: "Standar tahfidz" },
         // D. Administrasi
-        { id: "d1", name: "Binder RPP Guru Ukuran A4", jumlah: "1 Unit", deskripsi: "Penyimpanan RPP, modul pembelajaran, administrasi guru.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "Map binder" },
-        { id: "d2", name: "Binder Administrasi Ukuran A5", jumlah: "1 Unit", deskripsi: "Penyimpanan data pendukung administrasi & dokumentasi kegiatan.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "A5" },
+        { id: "d1", name: "Binder RPP Guru Ukuran A4", jumlah: "1 Unit", deskripsi: "Penyimpanan RPP, modul pembelajaran, administrasi guru.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "Map binder A4" },
+        { id: "d2", name: "Binder Administrasi Ukuran A5", jumlah: "1 Unit", deskripsi: "Penyimpanan data pendukung program & dokumentasi kegiatan.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "A5" },
         { id: "d3", name: "Map Plastik Pendaftaran Murid", jumlah: "2 Unit", deskripsi: "Ukuran F4, kapasitas 30-40 lembar. Menyimpan berkas pendaftaran.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "F4" },
         { id: "d4", name: "Map Plastik Satuan", jumlah: "20 Unit", deskripsi: "Ukuran F4, transparan/berwarna. Arsip individual data siswa.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "Per siswa" },
-        { id: "d5", name: "Lemari Arsip Administrasi", jumlah: "1 Unit", deskripsi: "Lemari besi/kayu 2-4 pintu, rak penyimpanan dokumen penting & laporan.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "Rak penyimpanan" },
-        { id: "d6", name: "Printer Multifungsi", jumlah: "1 Unit", deskripsi: "Print, scan, copy, sistem tinta ekonomis. Cetak administrasi & sertifikat.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "All in one" },
+        { id: "d5", name: "Lemari Arsip Administrasi", jumlah: "1 Unit", deskripsi: "Lemari besi/kayu 2-4 pintu, rak penyimpanan dokumen penting.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "Rak dokumen" },
+        { id: "d6", name: "Printer Multifungsi", jumlah: "1 Unit", deskripsi: "Print, scan, copy, sistem tinta ekonomis. Cetak administrasi, sertifikat.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "All in one" },
         { id: "d7", name: "Paket ATK Guru", jumlah: "1 Paket", deskripsi: "Spidol, penghapus, pulpen, pensil, stabilo, kertas HVS, sticky notes.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "Lengkap" },
         { id: "d8", name: "Paket ATK Murid", jumlah: "Sesuai peserta", deskripsi: "Buku tulis, pensil, penghapus, rautan, penggaris, tas map dokumen.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "Per siswa" },
         // E. Keamanan
         { id: "e1", name: "CCTV Pengawasan", jumlah: "2-4 Titik", deskripsi: "Resolusi Full HD, rekaman 24 jam, DVR/NVR. Keamanan & dokumentasi kegiatan.", kategori: "E. KEAMANAN & DOKUMENTASI", spesifikasiTambahan: "Full HD" },
         // F. Publikasi
-        { id: "f1", name: "Spanduk Pembukaan Program", jumlah: "1 Lembar", deskripsi: "Ukuran 2x1.5 meter, bahan flexi outdoor. Informasi ke masyarakat.", kategori: "F. PUBLIKASI & INFORMASI", spesifikasiTambahan: "Flexi outdoor" },
-        { id: "f2", name: "Standing Banner Program (Opsional)", jumlah: "1 Unit", deskripsi: "Media promosi, informasi program, identitas kegiatan PPDB.", kategori: "F. PUBLIKASI & INFORMASI", spesifikasiTambahan: "Roll up banner" }
+        { id: "f1", name: "Spanduk Pembukaan Program", jumlah: "1 Lembar", deskripsi: "Ukuran 2x1,5 meter, flexi outdoor. Informasi ke masyarakat.", kategori: "F. PUBLIKASI & INFORMASI", spesifikasiTambahan: "Flexi outdoor" },
+        { id: "f2", name: "Standing Banner Program (Opsional)", jumlah: "1 Unit", deskripsi: "Media promosi, informasi program, identitas PPDB.", kategori: "F. PUBLIKASI & INFORMASI", spesifikasiTambahan: "Roll up banner" }
     ];
 
-    // state data
     let itemsData = [];
 
-    // load/save local storage
     function loadFromStorage() {
-        const stored = localStorage.getItem("tahfidz_sarpras");
-        if(stored) {
-            itemsData = JSON.parse(stored);
-        } else {
-            itemsData = JSON.parse(JSON.stringify(defaultItems));
-        }
+        const stored = localStorage.getItem("tahfidz_wakaf_utsman");
+        if(stored) itemsData = JSON.parse(stored);
+        else itemsData = JSON.parse(JSON.stringify(defaultItems));
     }
     function saveToStorage() {
-        localStorage.setItem("tahfidz_sarpras", JSON.stringify(itemsData));
+        localStorage.setItem("tahfidz_wakaf_utsman", JSON.stringify(itemsData));
     }
+    function generateId() { return Date.now() + "-" + Math.random().toString(36).substr(2, 6); }
 
-    // helper generate ID baru
-    function generateId() {
-        return Date.now() + "-" + Math.random().toString(36).substr(2, 6);
-    }
-
-    // Tambah item manual
     function addNewItem() {
         const name = document.getElementById("newItemName").value.trim();
         const jumlah = document.getElementById("newItemJumlah").value.trim();
         const desc = document.getElementById("newItemDesc").value.trim();
         const kategori = document.getElementById("newItemKategori").value;
-        if(!name) {
-            alert("Nama barang harus diisi!");
-            return;
-        }
+        if(!name) { alert("Nama barang wajib diisi!"); return; }
         const newItem = {
             id: generateId(),
             name: name,
             jumlah: jumlah || "(Tentukan jumlah)",
             deskripsi: desc || "Belum ada deskripsi detail",
             kategori: kategori,
-            spesifikasiTambahan: "Manual"
+            spesifikasiTambahan: "Tambahan manual"
         };
         itemsData.push(newItem);
         saveToStorage();
         renderAllCategories();
-        // reset form
         document.getElementById("newItemName").value = "";
         document.getElementById("newItemJumlah").value = "";
         document.getElementById("newItemDesc").value = "";
     }
 
-    // Hapus item
     function deleteItem(id) {
         if(confirm("Hapus barang ini dari daftar?")) {
-            itemsData = itemsData.filter(item => item.id !== id);
+            itemsData = itemsData.filter(i => i.id !== id);
             saveToStorage();
             renderAllCategories();
         }
     }
 
-    // Edit item (mode inline) - kita buat popup sederhana atau inline? Untuk kemudahan: prompt untuk jumlah & deskripsi
-    // Tapi agar lebih bagus, kita gunakan modal sederhana dengan edit jumlah dan deskripsi (lebih intuitif)
     function editItemInline(id) {
         const item = itemsData.find(i => i.id === id);
         if(!item) return;
-        // menggunakan prompt untuk kemudahan (karena kompleksitas tinggi, namun tetap fungsional)
-        const newJumlah = prompt("Edit jumlah / spesifikasi:", item.jumlah);
+        let newJumlah = prompt("✏️ Edit jumlah / spesifikasi:", item.jumlah);
         if(newJumlah !== null && newJumlah.trim() !== "") item.jumlah = newJumlah.trim();
-        const newDesc = prompt("Edit deskripsi barang:", item.deskripsi);
+        let newDesc = prompt("✏️ Edit deskripsi barang:", item.deskripsi);
         if(newDesc !== null) item.deskripsi = newDesc.trim() === "" ? item.deskripsi : newDesc.trim();
         saveToStorage();
         renderAllCategories();
     }
 
-    // render semua kategori berdasarkan data itemsData yang ada (grouping)
     function renderAllCategories() {
         const container = document.getElementById("categoriesContainer");
         if(!container) return;
-        // kelompokkan berdasarkan kategori (urut sesuai prioritas)
         const categoriesOrder = [
             "A. PENDUKUNG AUDIO VISUAL", "B. SARANA KELAS", "C. KEAGAMAAN",
             "D. ADMINISTRASI & OPERASIONAL", "E. KEAMANAN & DOKUMENTASI", "F. PUBLIKASI & INFORMASI"
         ];
         const grouped = {};
-        itemsData.forEach(item => {
-            const cat = item.kategori;
-            if(!grouped[cat]) grouped[cat] = [];
-            grouped[cat].push(item);
-        });
+        itemsData.forEach(item => { if(!grouped[item.kategori]) grouped[item.kategori] = []; grouped[item.kategori].push(item); });
         let html = "";
         for(let cat of categoriesOrder) {
             const items = grouped[cat] || [];
             if(items.length === 0) continue;
+            let catIcon = "";
+            if(cat.includes("AUDIO VISUAL")) catIcon = "🎤";
+            else if(cat.includes("SARANA KELAS")) catIcon = "🏫";
+            else if(cat.includes("KEAGAMAAN")) catIcon = "🕌";
+            else if(cat.includes("ADMINISTRASI")) catIcon = "📁";
+            else if(cat.includes("KEAMANAN")) catIcon = "🔒";
+            else catIcon = "📢";
             html += `<div class="kategori-section">
                         <div class="kategori-header">
-                            <h2><i class="fas fa-cubes"></i> ${cat}</h2>
-                            <span class="badge-count">${items.length} barang</span>
+                            <h2>${catIcon} ${cat}</h2>
+                            <span class="badge-count">${items.length} item</span>
                         </div>
                         <div class="grid-items">`;
             items.forEach(item => {
                 html += `
-                    <div class="card" data-id="${item.id}">
+                    <div class="card">
                         <div class="item-name">
-                            <span><i class="fas fa-book-open"></i> ${escapeHtml(item.name)}</span>
+                            <span><i class="fas fa-box"></i> ${escapeHtml(item.name)}</span>
                             <span class="item-jumlah">📦 ${escapeHtml(item.jumlah)}</span>
                         </div>
-                        <div class="item-desc"><i class="fas fa-info-circle"></i> ${escapeHtml(item.deskripsi)}</div>
-                        <div class="item-spesifikasi"><i class="fas fa-microchip"></i> Spesifikasi: ${escapeHtml(item.spesifikasiTambahan || "-")}</div>
+                        <div class="item-desc"><i class="fas fa-pen-alt"></i> ${escapeHtml(item.deskripsi)}</div>
+                        <div class="item-spesifikasi"><i class="fas fa-cog"></i> Spesifikasi: ${escapeHtml(item.spesifikasiTambahan || "-")}</div>
                         <div class="card-actions">
-                            <button class="edit-btn" onclick="editItemInline('${item.id}')"><i class="fas fa-pen"></i> Ubah Jml/Desk</button>
-                            <button class="delete-btn" onclick="deleteItem('${item.id}')"><i class="fas fa-trash-alt"></i> Hapus</button>
+                            <button class="edit-btn" onclick="editItemInline('${item.id}')"><i class="fas fa-edit"></i> Ubah Jml/Desk</button>
+                            <button class="delete-btn" onclick="deleteItem('${item.id}')"><i class="fas fa-trash"></i> Hapus</button>
                         </div>
                     </div>
                 `;
             });
             html += `</div></div>`;
         }
-        if(itemsData.length === 0) {
-            html = `<div style="background:#fff9e8; border-radius:2rem; padding:2rem; text-align:center;">⚠️ Belum ada data. Tekan "Reset Data Awal" atau tambah barang manual.</div>`;
-        }
+        if(itemsData.length === 0) html = `<div style="background:#FEF2DF; border-radius:2rem; padding:2rem; text-align:center;">📭 Belum ada data. Silakan tambah barang atau reset data awal.</div>`;
         container.innerHTML = html;
     }
 
@@ -505,41 +519,34 @@
             if(m === '<') return '&lt;';
             if(m === '>') return '&gt;';
             return m;
-        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
-            return c;
         });
     }
 
-    // reset ke default
     function resetToDefault() {
-        if(confirm("Reset semua data ke daftar awal? Semua perubahan akan hilang!")) {
+        if(confirm("⚠️ Reset ke data awal? Semua perubahan akan hilang.")) {
             itemsData = JSON.parse(JSON.stringify(defaultItems));
             saveToStorage();
             renderAllCategories();
         }
     }
 
-    // Export PDF (menggunakan html2pdf dari container laporan utama)
     function exportToPDF() {
         const element = document.getElementById("reportContainer");
         const opt = {
-            margin:        [0.5, 0.5, 0.5, 0.5],
-            filename:     'Laporan_Sarana_Tahfidz_AnakSD.pdf',
-            image:        { type: 'jpeg', quality: 0.98 },
-            html2canvas:  { scale: 2, letterRendering: true, useCORS: false, logging: false },
-            jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+            margin: [0.6, 0.6, 0.6, 0.6],
+            filename: 'Laporan_Sarana_Tahfidz_RumahWakaf_Utsman.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, letterRendering: true, logging: false },
+            jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
         };
-        // Clone sedikit untuk menghindari scroll perubahan? langsung saja
         html2pdf().set(opt).from(element).save();
     }
 
-    // Simpan laporan ke localStorage (sudah otomatis saat add/edit/delete) tapi tombol beri notifikasi
     function saveReportNotify() {
         saveToStorage();
-        alert("✅ Laporan tersimpan di browser! (LocalStorage)");
+        alert("✅ Laporan tersimpan di penyimpanan lokal!");
     }
 
-    // inisialisasi event dan render awal
     document.addEventListener("DOMContentLoaded", () => {
         loadFromStorage();
         renderAllCategories();
@@ -547,10 +554,10 @@
         document.getElementById("exportPdfBtn").addEventListener("click", exportToPDF);
         document.getElementById("resetDefaultBtn").addEventListener("click", resetToDefault);
         document.getElementById("addItemBtn").addEventListener("click", addNewItem);
-        // global functions untuk inline delete/edit
         window.deleteItem = deleteItem;
         window.editItemInline = editItemInline;
     });
 </script>
 </body>
 </html>
+```
