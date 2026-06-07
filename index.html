@@ -13,96 +13,130 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Poppins', system-ui, 'Roboto', sans-serif;
+            font-family: 'Segoe UI', 'Poppins', 'Inter', system-ui, -apple-system, sans-serif;
         }
 
-        /* background cream dan pola islami di sisi kiri/kanan */
+        /* Background utama dengan pattern islami transparan yang kaya dan animasi gradasi halus */
         body {
-            background: #FEF9E6;  /* soft cream */
+            background: #FDF8ED;  /* warm cream base */
             position: relative;
             min-height: 100vh;
             padding: 2rem 2rem;
+            animation: bgPulse 12s infinite ease-in-out;
         }
 
-        /* dekorasi pattern islami di sisi samping (kiri & kanan) */
+        /* Background Pattern Islami Dinamis + Transparan (Geometris & Arabesque) */
         body::before {
             content: "";
             position: fixed;
             top: 0;
             left: 0;
-            width: 130px;
+            width: 100%;
             height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.12"><path fill="none" stroke="%238b6b3d" stroke-width="1.2" d="M20,20 L30,25 L40,20 L50,25 L60,20 L70,25 L80,20 M20,40 L30,45 L40,40 L50,45 L60,40 L70,45 L80,40 M20,60 L30,65 L40,60 L50,65 L60,60 L70,65 L80,60 M20,80 L30,85 L40,80 L50,85 L60,80 L70,85 L80,80 M10,30 L15,35 L10,40 M90,30 L95,35 L90,40" /><circle cx="50" cy="50" r="6" stroke="%238b6b3d" fill="none" stroke-width="1.2"/><path d="M30,15 L35,20 L30,25 M70,15 L65,20 L70,25" stroke="%238b6b3d" fill="none"/><path d="M45,85 L50,90 L55,85" stroke="%238b6b3d" fill="none"/><path d="M20,90 L25,88 L30,90" stroke="%238b6b3d"/></svg>');
-            background-repeat: repeat-y;
-            background-position: left top;
-            background-size: 50px auto;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(210, 180, 130, 0.08) 2%, transparent 2.5%),
+                radial-gradient(circle at 85% 70%, rgba(170, 130, 70, 0.08) 1.8%, transparent 2%),
+                repeating-linear-gradient(45deg, rgba(150, 110, 60, 0.03) 0px, rgba(150, 110, 60, 0.03) 2px, transparent 2px, transparent 8px),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" opacity="0.12"><path fill="none" stroke="%23B87C4E" stroke-width="1.5" d="M30,30 L40,38 L50,30 L60,38 L70,30 M30,60 L40,68 L50,60 L60,68 L70,60 M30,90 L40,98 L50,90 L60,98 L70,90 M30,120 L40,128 L50,120 L60,128 L70,120 M80,20 L90,28 L100,20 L110,28 L120,20 M80,50 L90,58 L100,50 L110,58 L120,50 M80,80 L90,88 L100,80 L110,88 L120,80 M80,110 L90,118 L100,110 L110,118 L120,110 M130,30 L140,38 L150,30 L160,38 L170,30 M130,60 L140,68 L150,60 L160,68 L170,60" /><path d="M100,140 L105,148 L95,148 Z M40,140 L45,148 L35,148 Z M160,140 L165,148 L155,148 Z" fill="%23B87C4E" opacity="0.2"/><circle cx="100" cy="40" r="12" stroke="%23B87C4E" fill="none" stroke-width="1.2" opacity="0.15"/><path d="M50,140 L70,150 L90,140 M110,140 L130,150 L150,140" stroke="%23855E32" fill="none" stroke-width="1" opacity="0.2"/></svg>');
+            background-repeat: repeat, repeat, repeat, repeat;
+            background-size: 45px 45px, 60px 60px, auto, 100px;
             pointer-events: none;
             z-index: 0;
+            opacity: 0.7;
         }
 
+        /* Side Ornament (samping kiri kanan islamic motif) diperkuat */
         body::after {
             content: "";
             position: fixed;
             top: 0;
+            left: 0;
             right: 0;
-            width: 130px;
-            height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.12"><path fill="none" stroke="%238b6b3d" stroke-width="1.2" d="M20,20 L30,25 L40,20 L50,25 L60,20 L70,25 L80,20 M20,40 L30,45 L40,40 L50,45 L60,40 L70,45 L80,40 M20,60 L30,65 L40,60 L50,65 L60,60 L70,65 L80,60 M20,80 L30,85 L40,80 L50,85 L60,80 L70,85 L80,80 M10,30 L15,35 L10,40 M90,30 L95,35 L90,40" /><circle cx="50" cy="50" r="6" stroke="%238b6b3d" fill="none"/><path d="M30,15 L35,20 L30,25 M70,15 L65,20 L70,25" stroke="%238b6b3d"/><path d="M45,85 L50,90 L55,85" stroke="%238b6b3d"/></svg>');
-            background-repeat: repeat-y;
-            background-position: right top;
-            background-size: 50px auto;
+            bottom: 0;
+            background: radial-gradient(ellipse at 30% 40%, rgba(245, 235, 210, 0.2) 0%, transparent 70%);
             pointer-events: none;
             z-index: 0;
         }
 
+        @keyframes bgPulse {
+            0% { background-color: #FDF8ED; }
+            50% { background-color: #FCF4E3; }
+            100% { background-color: #FDF8ED; }
+        }
+
+        /* animasi floating untuk card dan elemen */
+        @keyframes floatSoft {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+
         .app-container {
-            max-width: 1400px;
+            max-width: 1500px;
             margin: 0 auto;
             position: relative;
             z-index: 2;
-            background: rgba(254, 249, 230, 0.7);
+            background: rgba(253, 248, 237, 0.55);
             backdrop-filter: blur(2px);
             border-radius: 2rem;
-            padding: 0.2rem 0;
+            padding: 0.5rem 0.2rem 1rem 0.2rem;
+            transition: all 0.3s;
         }
 
-        /* header dengan aksen islami */
+        /* Header dengan animasi subtle */
         .header {
             text-align: center;
             margin-bottom: 2rem;
-            padding: 1rem 1rem 0.5rem;
+            padding: 1.2rem 1rem 0.8rem;
             position: relative;
+            animation: fadeInDown 0.8s ease-out;
         }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .header h1 {
-            font-size: 2rem;
+            font-size: 2.1rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #A67B46, #7A5C3A);
+            background: linear-gradient(135deg, #B27D40, #8B5A2B, #C7965A);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
             letter-spacing: -0.3px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.05);
-            font-family: 'Segoe UI', 'Poppins', serif;
+            text-shadow: 2px 2px 12px rgba(110, 70, 25, 0.1);
         }
         .header h1 i {
             background: none;
-            color: #C49A6C;
-            margin: 0 8px;
+            color: #B97F48;
+            margin: 0 6px;
+            transition: transform 0.3s;
+            display: inline-block;
         }
+        .header h1:hover i {
+            transform: rotate(5deg) scale(1.05);
+        }
+
         .subhead {
             font-size: 1rem;
             font-weight: 500;
-            background: #F3ECD9;
+            background: #F2E8D5cc;
+            backdrop-filter: blur(4px);
             display: inline-block;
-            padding: 0.4rem 1.6rem;
+            padding: 0.5rem 2rem;
             border-radius: 60px;
-            color: #6B4E2E;
-            margin-top: 0.5rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-            border: 1px solid #EADDBE;
+            color: #6E4C2A;
+            margin-top: 0.8rem;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.03);
+            border: 1px solid #EBD9BB;
+            transition: all 0.2s;
+        }
+        .subhead:hover {
+            transform: scale(1.02);
+            background: #F5EAD8;
         }
 
-        /* toolbar */
+        /* action bar */
         .action-bar {
             display: flex;
             flex-wrap: wrap;
@@ -110,12 +144,19 @@
             align-items: center;
             gap: 1rem;
             margin-bottom: 2rem;
-            background: #FFFBF0;
+            background: #FFFCF3ee;
+            backdrop-filter: blur(8px);
             padding: 0.8rem 1.8rem;
             border-radius: 48px;
-            box-shadow: 0 6px 14px rgba(90, 60, 30, 0.08);
-            border: 1px solid #EAD8BB;
+            box-shadow: 0 8px 18px rgba(60, 40, 20, 0.06);
+            border: 1px solid #E9DCC2;
+            animation: slideInUp 0.5s ease;
         }
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .btn-group {
             display: flex;
             gap: 0.8rem;
@@ -123,55 +164,61 @@
         }
         .btn {
             border: none;
-            background: #F5EDDA;
+            background: #F3ECDC;
             padding: 0.6rem 1.4rem;
             border-radius: 50px;
             font-weight: 600;
             cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             display: inline-flex;
             align-items: center;
             gap: 8px;
             font-size: 0.85rem;
-            color: #5C3F23;
+            color: #624A28;
         }
         .btn-primary {
-            background: #B78C4A;
+            background: #C68B49;
             color: white;
-            box-shadow: 0 4px 8px rgba(140, 85, 30, 0.2);
+            box-shadow: 0 5px 12px rgba(170, 105, 30, 0.2);
         }
         .btn-primary:hover {
-            background: #9E6F36;
-            transform: translateY(-2px);
+            background: #A66F36;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 18px rgba(110, 65, 20, 0.2);
         }
         .btn-secondary {
-            background: #8B6946;
+            background: #8F6A41;
             color: white;
         }
         .btn-secondary:hover {
-            background: #6F4F31;
+            background: #7A5634;
+            transform: translateY(-2px);
         }
         .btn-outline {
-            background: #FFF7E8;
-            border: 1px solid #DCCAA8;
-            color: #8B623F;
+            background: #FFF9EF;
+            border: 1px solid #DBCAA8;
+            color: #8C643B;
         }
         .btn-outline:hover {
-            background: #F3E8D2;
+            background: #F9EFDE;
+            transform: translateY(-2px);
         }
 
-        /* panel tambah barang */
+        /* add panel */
         .add-item-panel {
-            background: #FFFDF5;
+            background: #FFFBF4ee;
+            backdrop-filter: blur(6px);
             border-radius: 2rem;
             padding: 1.2rem 1.8rem;
             margin-bottom: 2rem;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
-            border: 1px solid #EFE2CA;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            align-items: flex-end;
+            box-shadow: 0 12px 26px rgba(0, 0, 0, 0.04);
+            border: 1px solid #EBDAB9;
+            transition: all 0.3s;
+            animation: fadeScale 0.6s;
+        }
+        @keyframes fadeScale {
+            from { opacity: 0; transform: scale(0.97); }
+            to { opacity: 1; transform: scale(1); }
         }
         .form-field {
             flex: 1;
@@ -182,180 +229,188 @@
             font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
-            color: #B48A5A;
+            color: #C29A64;
             letter-spacing: 0.5px;
             margin-bottom: 0.2rem;
         }
         .form-field input, .form-field textarea, .form-field select {
             width: 100%;
             padding: 0.7rem 1rem;
-            border: 1px solid #E2D2B5;
+            border: 1px solid #E3D3B5;
             border-radius: 32px;
             font-size: 0.9rem;
-            background: #FEFCF5;
-            outline: none;
+            background: #FFFFFFC9;
             transition: 0.2s;
         }
         .form-field input:focus, .form-field textarea:focus, .form-field select:focus {
-            border-color: #C7A16B;
-            box-shadow: 0 0 0 3px rgba(199, 161, 107, 0.2);
+            border-color: #CC9D62;
+            box-shadow: 0 0 0 3px rgba(204, 157, 98, 0.2);
+            background: white;
+            transform: scale(1.01);
         }
         .btn-add {
-            background: #A5763E;
+            background: #B17A43;
             color: white;
-            padding: 0.7rem 1.8rem;
+            padding: 0.7rem 2rem;
             border-radius: 40px;
             font-weight: bold;
             border: none;
             cursor: pointer;
+            transition: 0.25s;
         }
         .btn-add:hover {
-            background: #8C5E2F;
+            background: #976532;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
         }
 
-        /* kategori section */
-        .kategori-section {
-            margin-bottom: 2.5rem;
-        }
-        .kategori-header {
-            display: flex;
-            align-items: baseline;
-            gap: 15px;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-        .kategori-header h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: #EADDBE70;
-            padding: 0.2rem 1rem;
-            border-radius: 40px;
-            backdrop-filter: blur(4px);
-            color: #6C4F2C;
-            border-left: 5px solid #C7A16B;
-        }
-        .badge-count {
-            background: #DABB94;
-            color: #3E2A1A;
-            border-radius: 50px;
-            padding: 0.2rem 0.9rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
+        /* card grid with hover animation */
         .grid-items {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1.4rem;
+            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            gap: 1.6rem;
         }
         .card {
-            background: #FFFFFFE6;
-            backdrop-filter: blur(1px);
-            border-radius: 1.5rem;
+            background: #FFFFFFF2;
+            backdrop-filter: blur(2px);
+            border-radius: 1.8rem;
             padding: 1.2rem 1.3rem;
-            box-shadow: 0 10px 20px rgba(80, 55, 30, 0.05);
-            transition: 0.2s;
-            border-left: 6px solid #D9B382;
-            border-bottom: 1px solid #F3E5CE;
+            box-shadow: 0 12px 24px rgba(80, 55, 30, 0.06);
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border-left: 6px solid #E2B87A;
+            border-bottom: 1px solid #F1E5D0;
+            animation: cardGlow 3s infinite alternate;
+        }
+        @keyframes cardGlow {
+            0% { box-shadow: 0 8px 18px rgba(100, 65, 25, 0.05); }
+            100% { box-shadow: 0 20px 30px rgba(150, 100, 40, 0.1); }
         }
         .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 28px rgba(102, 68, 34, 0.1);
-            background: #FFFFF5;
+            transform: translateY(-8px) scale(1.01);
+            background: #FFFFFF;
+            border-left-color: #D99E48;
+            box-shadow: 0 24px 35px -12px rgba(80, 50, 20, 0.2);
         }
         .item-name {
             font-size: 1.1rem;
             font-weight: 800;
-            color: #573F1F;
+            color: #5C3F1E;
             display: flex;
             justify-content: space-between;
             align-items: baseline;
             flex-wrap: wrap;
-            gap: 5px;
         }
         .item-jumlah {
-            background: #F6EDDC;
+            background: #F7EFE0;
             padding: 0.2rem 0.7rem;
             border-radius: 30px;
             font-size: 0.75rem;
             font-weight: 700;
-            color: #936B3C;
+            color: #A4713A;
         }
         .item-desc {
-            color: #69563C;
+            color: #7B613F;
             font-size: 0.85rem;
-            line-height: 1.4;
-            margin-top: 6px;
+            line-height: 1.45;
+            margin-top: 8px;
         }
         .item-spesifikasi {
             font-size: 0.72rem;
-            background: #F9F3E6;
-            padding: 0.4rem 0.6rem;
-            border-radius: 20px;
-            color: #8B6942;
+            background: #FBF4E8;
+            padding: 0.4rem 0.7rem;
+            border-radius: 24px;
+            color: #8F663B;
             margin-top: 8px;
         }
         .card-actions {
             display: flex;
             justify-content: flex-end;
-            gap: 0.6rem;
-            margin-top: 0.8rem;
+            gap: 0.7rem;
+            margin-top: 0.9rem;
         }
         .edit-btn, .delete-btn {
             background: none;
             border: none;
             font-size: 0.8rem;
             cursor: pointer;
-            padding: 0.3rem 0.8rem;
+            padding: 0.35rem 1rem;
             border-radius: 40px;
-            transition: 0.1s;
+            transition: 0.2s;
+            font-weight: 500;
         }
-        .edit-btn { background: #EEE2CF; color: #8B623F; }
-        .delete-btn { background: #F6E7E0; color: #BC7A5C; }
-        .edit-btn:hover { background: #E2CEB0; }
-        .delete-btn:hover { background: #F1D9CF; }
+        .edit-btn { background: #F0E6D6; color: #946B3D; }
+        .delete-btn { background: #FAEFE8; color: #BD7A5A; }
+        .edit-btn:hover { background: #E7D9C4; transform: scale(1.02); }
+        .delete-btn:hover { background: #F3E2D8; transform: scale(1.02); }
+
+        .kategori-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: #EADDBE88;
+            backdrop-filter: blur(4px);
+            padding: 0.2rem 1.2rem;
+            border-radius: 60px;
+            color: #6C4F2C;
+            transition: 0.2s;
+        }
+        .badge-count {
+            background: #DFCDAB;
+            color: #4C361C;
+            border-radius: 50px;
+            padding: 0.2rem 1rem;
+        }
         .footer-note {
             text-align: center;
             margin-top: 2rem;
-            font-size: 0.7rem;
-            color: #B89364;
-            border-top: 1px dashed #EADBBE;
+            font-size: 0.75rem;
+            color: #B68F5C;
+            border-top: 1px dashed #E8D8BA;
             padding-top: 1rem;
         }
+        /* loading animasi sederhana */
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        i.fa-spinner-third {
+            animation: spinSlow 1s linear infinite;
+        }
+
         @media (max-width: 760px) {
             body { padding: 1rem; }
-            body::before, body::after { width: 40px; background-size: 30px auto; }
+            .header h1 { font-size: 1.6rem; }
         }
     </style>
 </head>
 <body>
 <div class="app-container" id="reportContainer">
     <div class="header">
-        <h1><i class="fas fa-mosque"></i> PROGRAM TAHFIDZ <br> RUMAH WAKAF UTSMAN BIN AFFAN <i class="fas fa-quran"></i></h1>
-        <div class="subhead"><i class="fas fa-hand-peace"></i> Sarana & Prasarana Tahfidz Anak Usia SD</div>
+        <h1><i class="fas fa-moon"></i> PROGRAM TAHFIDZ <br> RUMAH WAKAF UTSMAN BIN AFFAN <i class="fas fa-star-and-crescent"></i></h1>
+        <div class="subhead"><i class="fas fa-hands-praying"></i> Sarana & Prasarana | Anak Usia SD | Berkah & Profesional</div>
     </div>
 
     <div class="action-bar">
         <div class="btn-group">
             <button id="saveLocalBtn" class="btn btn-primary"><i class="fas fa-save"></i> Simpan Laporan</button>
             <button id="exportPdfBtn" class="btn btn-secondary"><i class="fas fa-file-pdf"></i> Export PDF</button>
-            <button id="resetDefaultBtn" class="btn btn-outline"><i class="fas fa-undo-alt"></i> Reset Data Awal</button>
+            <button id="resetDefaultBtn" class="btn btn-outline"><i class="fas fa-undo-alt"></i> Reset Data</button>
         </div>
-        <div><i class="fas fa-pen-fancy"></i> <span style="font-weight:500;">🖊️ Klik Ubah Jml/Deskripsi</span></div>
+        <div><i class="fas fa-pen-fancy"></i> <span style="font-weight:500;">✨ Klik edit untuk ubah jumlah / deskripsi</span></div>
     </div>
 
-    <!-- Tambah barang manual -->
+    <!-- Panel Tambah Barang -->
     <div class="add-item-panel">
         <div class="form-field">
             <label><i class="fas fa-tag"></i> Nama Barang</label>
-            <input type="text" id="newItemName" placeholder="Contoh: Al-Qur'an Tajwid">
+            <input type="text" id="newItemName" placeholder="Contoh: Jam Dinding Digital">
         </div>
         <div class="form-field">
             <label><i class="fas fa-sort-numeric-up"></i> Jumlah / Spesifikasi</label>
-            <input type="text" id="newItemJumlah" placeholder="20 Set / 1 Unit">
+            <input type="text" id="newItemJumlah" placeholder="2 Unit / 1 Set">
         </div>
         <div class="form-field">
-            <label><i class="fas fa-align-left"></i> Deskripsi Lengkap</label>
-            <textarea id="newItemDesc" rows="1" placeholder="Keterangan detail & fungsi..."></textarea>
+            <label><i class="fas fa-align-left"></i> Deskripsi</label>
+            <textarea id="newItemDesc" rows="1" placeholder="Keterangan barang & fungsinya..."></textarea>
         </div>
         <div class="form-field">
             <label><i class="fas fa-layer-group"></i> Kategori</label>
@@ -363,9 +418,9 @@
                 <option value="A. PENDUKUNG AUDIO VISUAL">🎥 A. Audio Visual</option>
                 <option value="B. SARANA KELAS">🪑 B. Sarana Kelas</option>
                 <option value="C. KEAGAMAAN">📖 C. Keagamaan</option>
-                <option value="D. ADMINISTRASI & OPERASIONAL">📂 D. Administrasi & Operasional</option>
-                <option value="E. KEAMANAN & DOKUMENTASI">📸 E. Keamanan & Dokumentasi</option>
-                <option value="F. PUBLIKASI & INFORMASI">📢 F. Publikasi & Informasi</option>
+                <option value="D. ADMINISTRASI & OPERASIONAL">📂 D. Administrasi</option>
+                <option value="E. KEAMANAN & DOKUMENTASI">📸 E. Keamanan</option>
+                <option value="F. PUBLIKASI & INFORMASI">📢 F. Publikasi</option>
             </select>
         </div>
         <button id="addItemBtn" class="btn-add"><i class="fas fa-plus-circle"></i> Tambah Barang</button>
@@ -373,52 +428,44 @@
 
     <div id="categoriesContainer"></div>
     <div class="footer-note">
-        <i class="fas fa-star-and-crescent"></i> Bismillah, data tersimpan di perangkat Anda. Dapat diedit, tambah barang, export PDF. <i class="fas fa-star-and-crescent"></i>
+        <i class="fas fa-spinner-third"></i> Data tersimpan di local storage | animasi islami menyejukkan | <i class="fas fa-certificate"></i>
     </div>
 </div>
 
 <script>
-    // ---------- DATA DEFAULT (tidak mencantumkan anggaran) ----------
+    // Data Default LENGKAP (tanpa anggaran)
     const defaultItems = [
-        // A. Audio Visual
-        { id: "a1", name: "Monitor LED / Smart TV 64-65 Inch / Proyektor Epson", jumlah: "1 Unit", deskripsi: "Resolusi Full HD/4K, port HDMI/USB. Untuk menampilkan materi hafalan & murottal.", kategori: "A. PENDUKUNG AUDIO VISUAL", spesifikasiTambahan: "Layar ≥64 Inch" },
-        { id: "a2", name: "Sound System Aktif Ukuran Besar", jumlah: "1 Set", deskripsi: "Daya 100-200W, Bluetooth, USB, mic. Pemutaran audio murottal dan murojaah kelompok.", kategori: "A. PENDUKUNG AUDIO VISUAL", spesifikasiTambahan: "Speaker aktif + mic" },
-        { id: "a3", name: "Laptop Pembelajaran (Opsional)", jumlah: "1 Unit", deskripsi: "Core i3 gen12/ Ryzen5, RAM 8GB, SSD. Administrasi & penyimpanan data siswa jika inventaris belum ada.", kategori: "A. PENDUKUNG AUDIO VISUAL", spesifikasiTambahan: "Media AV + administrasi" },
-        // B. Sarana Kelas
-        { id: "b1", name: "Whiteboard Stand Besar", jumlah: "1 Unit", deskripsi: "Ukuran 2x1,5 meter, stand besi roda. Media utama tahsin, tajwid, hafalan.", kategori: "B. SARANA KELAS", spesifikasiTambahan: "Permukaan whiteboard" },
-        { id: "b2", name: "Whiteboard Double Side", jumlah: "1 Unit", deskripsi: "100x80 cm, dua sisi tulis, roda. Papan informasi jadwal & target hafalan.", kategori: "B. SARANA KELAS", spesifikasiTambahan: "Mobile" },
-        { id: "b3", name: "Meja Belajar Anak", jumlah: "20 Unit", deskripsi: "Meja lesehan, material kayu/plastik. Fasilitas belajar individual.", kategori: "B. SARANA KELAS", spesifikasiTambahan: "Aman untuk usia SD" },
-        { id: "b4", name: "Karpet Lantai Pembelajaran", jumlah: "Menyesuaikan ruang", deskripsi: "Karpet tebal/tatami edukasi, mudah dibersihkan, nyaman untuk lesehan.", kategori: "B. SARANA KELAS", spesifikasiTambahan: "Tebal & aman" },
-        { id: "b5", name: "Kipas Angin / AC Ruangan", jumlah: "1-2 Unit", deskripsi: "Kipas dinding/berdiri atau AC 1 PK. Menjaga kenyamanan konsentrasi.", kategori: "B. SARANA KELAS", spesifikasiTambahan: "Sirkulasi udara baik" },
-        // C. Keagamaan
-        { id: "c1", name: "Rak Al-Qur'an dan Buku Iqra'", jumlah: "1 Unit", deskripsi: "Material kayu/besi kapasitas 30-50 mushaf. Penyimpanan rapi Al-Qur'an & Iqro.", kategori: "C. KEAGAMAAN", spesifikasiTambahan: "Rak kokoh" },
-        { id: "c2", name: "Mushaf Al-Qur'an Program Tahfidz", jumlah: "Sesuai peserta", deskripsi: "Mushaf standar tahfidz, cetakan jelas. Media hafalan & murojaah.", kategori: "C. KEAGAMAAN", spesifikasiTambahan: "Standar tahfidz" },
-        // D. Administrasi
-        { id: "d1", name: "Binder RPP Guru Ukuran A4", jumlah: "1 Unit", deskripsi: "Penyimpanan RPP, modul pembelajaran, administrasi guru.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "Map binder A4" },
-        { id: "d2", name: "Binder Administrasi Ukuran A5", jumlah: "1 Unit", deskripsi: "Penyimpanan data pendukung program & dokumentasi kegiatan.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "A5" },
-        { id: "d3", name: "Map Plastik Pendaftaran Murid", jumlah: "2 Unit", deskripsi: "Ukuran F4, kapasitas 30-40 lembar. Menyimpan berkas pendaftaran.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "F4" },
-        { id: "d4", name: "Map Plastik Satuan", jumlah: "20 Unit", deskripsi: "Ukuran F4, transparan/berwarna. Arsip individual data siswa.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "Per siswa" },
-        { id: "d5", name: "Lemari Arsip Administrasi", jumlah: "1 Unit", deskripsi: "Lemari besi/kayu 2-4 pintu, rak penyimpanan dokumen penting.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "Rak dokumen" },
-        { id: "d6", name: "Printer Multifungsi", jumlah: "1 Unit", deskripsi: "Print, scan, copy, sistem tinta ekonomis. Cetak administrasi, sertifikat.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "All in one" },
-        { id: "d7", name: "Paket ATK Guru", jumlah: "1 Paket", deskripsi: "Spidol, penghapus, pulpen, pensil, stabilo, kertas HVS, sticky notes.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "Lengkap" },
-        { id: "d8", name: "Paket ATK Murid", jumlah: "Sesuai peserta", deskripsi: "Buku tulis, pensil, penghapus, rautan, penggaris, tas map dokumen.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "Per siswa" },
-        // E. Keamanan
-        { id: "e1", name: "CCTV Pengawasan", jumlah: "2-4 Titik", deskripsi: "Resolusi Full HD, rekaman 24 jam, DVR/NVR. Keamanan & dokumentasi kegiatan.", kategori: "E. KEAMANAN & DOKUMENTASI", spesifikasiTambahan: "Full HD" },
-        // F. Publikasi
-        { id: "f1", name: "Spanduk Pembukaan Program", jumlah: "1 Lembar", deskripsi: "Ukuran 2x1,5 meter, flexi outdoor. Informasi ke masyarakat.", kategori: "F. PUBLIKASI & INFORMASI", spesifikasiTambahan: "Flexi outdoor" },
-        { id: "f2", name: "Standing Banner Program (Opsional)", jumlah: "1 Unit", deskripsi: "Media promosi, informasi program, identitas PPDB.", kategori: "F. PUBLIKASI & INFORMASI", spesifikasiTambahan: "Roll up banner" }
+        { id: "a1", name: "Monitor LED / Smart TV 64-65 Inch / Proyektor Epson", jumlah: "1 Unit", deskripsi: "Resolusi Full HD/4K, port HDMI/USB. Menampilkan materi hafalan & murottal.", kategori: "A. PENDUKUNG AUDIO VISUAL", spesifikasiTambahan: "≥64 Inch" },
+        { id: "a2", name: "Sound System Aktif Ukuran Besar", jumlah: "1 Set", deskripsi: "Daya 100-200W, Bluetooth, USB, mic. Pemutaran murottal & murojaah kelompok.", kategori: "A. PENDUKUNG AUDIO VISUAL", spesifikasiTambahan: "Speaker + mic" },
+        { id: "a3", name: "Laptop Pembelajaran (Opsional)", jumlah: "1 Unit", deskripsi: "Core i3 gen12/Ryzen5, RAM 8GB, SSD. Administrasi data siswa jika inventaris belum ada.", kategori: "A. PENDUKUNG AUDIO VISUAL", spesifikasiTambahan: "Opsional" },
+        { id: "b1", name: "Whiteboard Stand Besar", jumlah: "1 Unit", deskripsi: "Ukuran 2x1,5 meter, stand besi roda. Media tahsin, tajwid, hafalan.", kategori: "B. SARANA KELAS", spesifikasiTambahan: "Whiteboard magnetik" },
+        { id: "b2", name: "Whiteboard Double Side", jumlah: "1 Unit", deskripsi: "100x80 cm dua sisi, roda. Papan jadwal & target hafalan.", kategori: "B. SARANA KELAS", spesifikasiTambahan: "Mobile" },
+        { id: "b3", name: "Meja Belajar Anak", jumlah: "20 Unit", deskripsi: "Meja lesehan, kayu/plastik. Fasilitas belajar individual.", kategori: "B. SARANA KELAS", spesifikasiTambahan: "Aman usia SD" },
+        { id: "b4", name: "Karpet Lantai Pembelajaran", jumlah: "Sesuai ruang", deskripsi: "Karpet tebal/tatami, mudah bersih, nyaman lesehan.", kategori: "B. SARANA KELAS", spesifikasiTambahan: "Tebal & anti licin" },
+        { id: "b5", name: "Kipas Angin / AC Ruangan", jumlah: "1-2 Unit", deskripsi: "Kipas dinding/berdiri atau AC 1 PK. Kenyamanan belajar.", kategori: "B. SARANA KELAS", spesifikasiTambahan: "Sirkulasi udara" },
+        { id: "c1", name: "Rak Al-Qur'an dan Buku Iqra'", jumlah: "1 Unit", deskripsi: "Kapasitas 30-50 mushaf, kayu/besi. Penyimpanan rapi Al-Qur'an.", kategori: "C. KEAGAMAAN", spesifikasiTambahan: "Rak kuat" },
+        { id: "c2", name: "Mushaf Al-Qur'an Program Tahfidz", jumlah: "Sesuai peserta", deskripsi: "Mushaf standar tahfidz, cetakan jelas. Media hafalan.", kategori: "C. KEAGAMAAN", spesifikasiTambahan: "Standar tahfidz" },
+        { id: "d1", name: "Binder RPP Guru A4", jumlah: "1 Unit", deskripsi: "Penyimpanan RPP, modul, administrasi guru.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "Binder A4" },
+        { id: "d2", name: "Binder Administrasi A5", jumlah: "1 Unit", deskripsi: "Data pendukung program & dokumentasi.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "A5" },
+        { id: "d3", name: "Map Plastik Pendaftaran Murid", jumlah: "2 Unit", deskripsi: "Ukuran F4, kapasitas 30-40 lembar. Berkas pendaftaran.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "F4" },
+        { id: "d4", name: "Map Plastik Satuan", jumlah: "20 Unit", deskripsi: "Arsip individual data siswa.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "F4 transparan" },
+        { id: "d5", name: "Lemari Arsip Administrasi", jumlah: "1 Unit", deskripsi: "Lemari besi/kayu 2-4 pintu. Arsip penting program.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "Rak dokumen" },
+        { id: "d6", name: "Printer Multifungsi", jumlah: "1 Unit", deskripsi: "Print, scan, copy, tinta ekonomis. Cetak sertifikat & administrasi.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "All in one" },
+        { id: "d7", name: "Paket ATK Guru", jumlah: "1 Paket", deskripsi: "Spidol, penghapus, pulpen, stabilo, kertas HVS, sticky notes.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "Lengkap" },
+        { id: "d8", name: "Paket ATK Murid", jumlah: "Sesuai peserta", deskripsi: "Buku tulis, pensil, penghapus, rautan, penggaris, tas map.", kategori: "D. ADMINISTRASI & OPERASIONAL", spesifikasiTambahan: "Per siswa" },
+        { id: "e1", name: "CCTV Pengawasan", jumlah: "2-4 Titik", deskripsi: "Full HD, rekaman 24 jam, DVR/NVR. Keamanan & dokumentasi.", kategori: "E. KEAMANAN & DOKUMENTASI", spesifikasiTambahan: "Full HD" },
+        { id: "f1", name: "Spanduk Pembukaan Program", jumlah: "1 Lembar", deskripsi: "Ukuran 2x1,5m, flexi outdoor. Publikasi ke masyarakat.", kategori: "F. PUBLIKASI & INFORMASI", spesifikasiTambahan: "Flexi outdoor" },
+        { id: "f2", name: "Standing Banner Program", jumlah: "1 Unit", deskripsi: "Media promosi, informasi program, identitas PPDB.", kategori: "F. PUBLIKASI & INFORMASI", spesifikasiTambahan: "Roll up banner" }
     ];
 
     let itemsData = [];
 
     function loadFromStorage() {
-        const stored = localStorage.getItem("tahfidz_wakaf_utsman");
+        const stored = localStorage.getItem("tahfidz_wakaf_islami");
         if(stored) itemsData = JSON.parse(stored);
         else itemsData = JSON.parse(JSON.stringify(defaultItems));
     }
-    function saveToStorage() {
-        localStorage.setItem("tahfidz_wakaf_utsman", JSON.stringify(itemsData));
-    }
+    function saveToStorage() { localStorage.setItem("tahfidz_wakaf_islami", JSON.stringify(itemsData)); }
     function generateId() { return Date.now() + "-" + Math.random().toString(36).substr(2, 6); }
 
     function addNewItem() {
@@ -427,135 +474,50 @@
         const desc = document.getElementById("newItemDesc").value.trim();
         const kategori = document.getElementById("newItemKategori").value;
         if(!name) { alert("Nama barang wajib diisi!"); return; }
-        const newItem = {
-            id: generateId(),
-            name: name,
-            jumlah: jumlah || "(Tentukan jumlah)",
-            deskripsi: desc || "Belum ada deskripsi detail",
-            kategori: kategori,
-            spesifikasiTambahan: "Tambahan manual"
-        };
+        const newItem = { id: generateId(), name, jumlah: jumlah || "(Tentukan jumlah)", deskripsi: desc || "Belum ada deskripsi", kategori, spesifikasiTambahan: "Ditambahkan manual" };
         itemsData.push(newItem);
         saveToStorage();
         renderAllCategories();
-        document.getElementById("newItemName").value = "";
-        document.getElementById("newItemJumlah").value = "";
-        document.getElementById("newItemDesc").value = "";
+        document.getElementById("newItemName").value = ""; document.getElementById("newItemJumlah").value = ""; document.getElementById("newItemDesc").value = "";
     }
 
-    function deleteItem(id) {
-        if(confirm("Hapus barang ini dari daftar?")) {
-            itemsData = itemsData.filter(i => i.id !== id);
-            saveToStorage();
-            renderAllCategories();
-        }
-    }
-
+    function deleteItem(id) { if(confirm("Hapus barang?")) { itemsData = itemsData.filter(i => i.id !== id); saveToStorage(); renderAllCategories(); } }
     function editItemInline(id) {
         const item = itemsData.find(i => i.id === id);
         if(!item) return;
-        let newJumlah = prompt("✏️ Edit jumlah / spesifikasi:", item.jumlah);
+        let newJumlah = prompt("✏️ Ubah jumlah/spesifikasi:", item.jumlah);
         if(newJumlah !== null && newJumlah.trim() !== "") item.jumlah = newJumlah.trim();
-        let newDesc = prompt("✏️ Edit deskripsi barang:", item.deskripsi);
+        let newDesc = prompt("✏️ Ubah deskripsi barang:", item.deskripsi);
         if(newDesc !== null) item.deskripsi = newDesc.trim() === "" ? item.deskripsi : newDesc.trim();
-        saveToStorage();
-        renderAllCategories();
+        saveToStorage(); renderAllCategories();
     }
 
     function renderAllCategories() {
         const container = document.getElementById("categoriesContainer");
         if(!container) return;
-        const categoriesOrder = [
-            "A. PENDUKUNG AUDIO VISUAL", "B. SARANA KELAS", "C. KEAGAMAAN",
-            "D. ADMINISTRASI & OPERASIONAL", "E. KEAMANAN & DOKUMENTASI", "F. PUBLIKASI & INFORMASI"
-        ];
+        const categoriesOrder = ["A. PENDUKUNG AUDIO VISUAL","B. SARANA KELAS","C. KEAGAMAAN","D. ADMINISTRASI & OPERASIONAL","E. KEAMANAN & DOKUMENTASI","F. PUBLIKASI & INFORMASI"];
         const grouped = {};
-        itemsData.forEach(item => { if(!grouped[item.kategori]) grouped[item.kategori] = []; grouped[item.kategori].push(item); });
+        itemsData.forEach(i => { if(!grouped[i.kategori]) grouped[i.kategori] = []; grouped[i.kategori].push(i); });
         let html = "";
         for(let cat of categoriesOrder) {
-            const items = grouped[cat] || [];
+            let items = grouped[cat] || [];
             if(items.length === 0) continue;
-            let catIcon = "";
-            if(cat.includes("AUDIO VISUAL")) catIcon = "🎤";
-            else if(cat.includes("SARANA KELAS")) catIcon = "🏫";
-            else if(cat.includes("KEAGAMAAN")) catIcon = "🕌";
-            else if(cat.includes("ADMINISTRASI")) catIcon = "📁";
-            else if(cat.includes("KEAMANAN")) catIcon = "🔒";
-            else catIcon = "📢";
-            html += `<div class="kategori-section">
-                        <div class="kategori-header">
-                            <h2>${catIcon} ${cat}</h2>
-                            <span class="badge-count">${items.length} item</span>
-                        </div>
-                        <div class="grid-items">`;
+            let icon = cat.includes("AUDIO")?"🎤":cat.includes("KELAS")?"🏫":cat.includes("KEAGAMAAN")?"🕋":cat.includes("ADMIN")?"📂":cat.includes("KEAMANAN")?"🔒":"📢";
+            html += `<div class="kategori-section"><div class="kategori-header"><h2>${icon} ${cat}</h2><span class="badge-count">${items.length} item</span></div><div class="grid-items">`;
             items.forEach(item => {
-                html += `
-                    <div class="card">
-                        <div class="item-name">
-                            <span><i class="fas fa-box"></i> ${escapeHtml(item.name)}</span>
-                            <span class="item-jumlah">📦 ${escapeHtml(item.jumlah)}</span>
-                        </div>
-                        <div class="item-desc"><i class="fas fa-pen-alt"></i> ${escapeHtml(item.deskripsi)}</div>
-                        <div class="item-spesifikasi"><i class="fas fa-cog"></i> Spesifikasi: ${escapeHtml(item.spesifikasiTambahan || "-")}</div>
-                        <div class="card-actions">
-                            <button class="edit-btn" onclick="editItemInline('${item.id}')"><i class="fas fa-edit"></i> Ubah Jml/Desk</button>
-                            <button class="delete-btn" onclick="deleteItem('${item.id}')"><i class="fas fa-trash"></i> Hapus</button>
-                        </div>
-                    </div>
-                `;
+                html += `<div class="card"><div class="item-name"><span><i class="fas fa-cube"></i> ${escapeHtml(item.name)}</span><span class="item-jumlah">📦 ${escapeHtml(item.jumlah)}</span></div><div class="item-desc">📌 ${escapeHtml(item.deskripsi)}</div><div class="item-spesifikasi"><i class="fas fa-sliders-h"></i> ${escapeHtml(item.spesifikasiTambahan || "-")}</div><div class="card-actions"><button class="edit-btn" onclick="editItemInline('${item.id}')"><i class="fas fa-edit"></i> Ubah</button><button class="delete-btn" onclick="deleteItem('${item.id}')"><i class="fas fa-trash-alt"></i> Hapus</button></div></div>`;
             });
             html += `</div></div>`;
         }
-        if(itemsData.length === 0) html = `<div style="background:#FEF2DF; border-radius:2rem; padding:2rem; text-align:center;">📭 Belum ada data. Silakan tambah barang atau reset data awal.</div>`;
+        if(itemsData.length === 0) html = `<div style="background:#FDF1E0; border-radius:2rem; padding:2rem; text-align:center;">📭 Belum ada data. Silakan tambah barang atau reset.</div>`;
         container.innerHTML = html;
     }
+    function escapeHtml(str) { if(!str) return ""; return str.replace(/[&<>]/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;' }[m])); }
+    function resetToDefault() { if(confirm("Reset ke daftar awal?")) { itemsData = JSON.parse(JSON.stringify(defaultItems)); saveToStorage(); renderAllCategories(); } }
+    function exportToPDF() { html2pdf().set({ margin: 0.6, filename: 'Laporan_Tahfidz_RumahWakaf.pdf', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' } }).from(document.getElementById("reportContainer")).save(); }
+    function saveReportNotify() { saveToStorage(); alert("✅ Laporan tersimpan di lokal browser!"); }
 
-    function escapeHtml(str) {
-        if(!str) return "";
-        return str.replace(/[&<>]/g, function(m) {
-            if(m === '&') return '&amp;';
-            if(m === '<') return '&lt;';
-            if(m === '>') return '&gt;';
-            return m;
-        });
-    }
-
-    function resetToDefault() {
-        if(confirm("⚠️ Reset ke data awal? Semua perubahan akan hilang.")) {
-            itemsData = JSON.parse(JSON.stringify(defaultItems));
-            saveToStorage();
-            renderAllCategories();
-        }
-    }
-
-    function exportToPDF() {
-        const element = document.getElementById("reportContainer");
-        const opt = {
-            margin: [0.6, 0.6, 0.6, 0.6],
-            filename: 'Laporan_Sarana_Tahfidz_RumahWakaf_Utsman.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, letterRendering: true, logging: false },
-            jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
-        };
-        html2pdf().set(opt).from(element).save();
-    }
-
-    function saveReportNotify() {
-        saveToStorage();
-        alert("✅ Laporan tersimpan di penyimpanan lokal!");
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-        loadFromStorage();
-        renderAllCategories();
-        document.getElementById("saveLocalBtn").addEventListener("click", saveReportNotify);
-        document.getElementById("exportPdfBtn").addEventListener("click", exportToPDF);
-        document.getElementById("resetDefaultBtn").addEventListener("click", resetToDefault);
-        document.getElementById("addItemBtn").addEventListener("click", addNewItem);
-        window.deleteItem = deleteItem;
-        window.editItemInline = editItemInline;
-    });
+    document.addEventListener("DOMContentLoaded", () => { loadFromStorage(); renderAllCategories(); document.getElementById("saveLocalBtn").addEventListener("click", saveReportNotify); document.getElementById("exportPdfBtn").addEventListener("click", exportToPDF); document.getElementById("resetDefaultBtn").addEventListener("click", resetToDefault); document.getElementById("addItemBtn").addEventListener("click", addNewItem); window.deleteItem = deleteItem; window.editItemInline = editItemInline; });
 </script>
 </body>
 </html>
-```
